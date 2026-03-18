@@ -10,8 +10,9 @@ export interface VenueItem {
   name: string;
   location: string;
   capacity: number;
+  picture?: string; 
 }
 
 export interface VenueJson {
-  data: VenueItem[]; 
+  data: VenueItem[];
 }

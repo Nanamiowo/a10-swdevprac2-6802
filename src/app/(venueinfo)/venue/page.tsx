@@ -1,18 +1,15 @@
-import Banner from "@/components/Banner"
-import getVenues from "@/libs/getVenues"
-import VenueCatalog from "@/components/VenueCatalog"
+"use client";
 
-export default function Page() {
+import Banner from "@/components/Banner";
+import VenueCatalogClient from "@/components/VenueCatalogClient";
 
-  const venues = getVenues()
-
+export default function VenuePage() {
   return (
     <main>
-
       <Banner />
 
-      <VenueCatalog venuesJson={venues}/>
-
+      {/* ใช้ Client Component ที่ fetch data เอง */}
+      <VenueCatalogClient />
     </main>
-  )
+  );
 }

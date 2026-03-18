@@ -1,29 +1,29 @@
-import getVenue from "@/libs/getVenue"
-import Image from "next/image"
+// src/app/(venueinfo)/venue/[vid]/page.tsx
+import Image from "next/image";
+import getVenue from "@/libs/getVenue";
 
-export default async function Page({ params }: any){
+export default async function VenuePage({ params }: any) {
+  const vid = params.vid;
 
-  const vid = await params.vid
-  const venueJson = await getVenue(vid)
-  const venue = venueJson.data
+  const venueJson = await getVenue(vid);
+  const venue = venueJson.data[0]; // assume API คืน array ของ 1 item
 
-  return(
+  if (!venue) {
+    return <p>ไม่พบสถานที่จองนะพี่ม่อน QwQ</p>;
+  }
 
-    <main>
-
-      <Image src={venue.picture} alt={venue.name} width={100} height={100}/>
-
-      <h1>{venue.name}</h1>
-
-      <p>{venue.address}</p>
-      <p>{venue.province}</p>
-      <p>{venue.postalcode}</p>
-
-      <p>{venue.tel}</p>
-
-      <p>{venue.dailyrate}</p>
-
+  return (
+    <main className="p-6">
+      <Image
+        src={venue.picture ?? "/default.png"}
+        alt={venue.name}
+        width={300}
+        height={200}
+        className="rounded-lg"
+      />
+      <h1 className="text-2xl font-bold mt-4">{venue.name}</h1>
+      <p className="mt-2"><b>Location:</b> {venue.location}</p>
+      <p className="mt-1"><b>Capacity:</b> {venue.capacity}</p>
     </main>
-
-  )
+  );
 }

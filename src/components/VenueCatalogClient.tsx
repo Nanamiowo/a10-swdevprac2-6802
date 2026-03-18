@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { VenueJson } from "../interface";
 import Card from "./Card";
 
-export default function VenueCatalog() {
+export default function VenueCatalogClient() {
   const [venues, setVenues] = useState<VenueJson | null>(null);
 
   useEffect(() => {
     fetch("/api/venues")
-      .then(res => res.json())
-      .then(data => setVenues(data))
-      .catch(err => console.error(err));
+      .then((res) => res.json())
+      .then((data) => setVenues(data))
+      .catch((err) => console.error("Error fetching venues:", err));
   }, []);
 
   if (!venues) return <p>Loading...</p>;

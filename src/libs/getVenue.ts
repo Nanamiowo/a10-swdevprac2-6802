@@ -1,11 +1,9 @@
-export default async function getVenue(vid:string){
+import { VenueJson } from "../interface";
 
-  const res = await fetch(
-    `https://a08-venue-explorer-backend.vercel.app/api/v1/venues/${vid}`,
-    { cache:"no-store" }
-  )
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  const data = await res.json()
-
-  return data
+export default async function getVenue(vid: string): Promise<VenueJson> {
+  const res = await fetch(`${baseUrl}/api/venues/${vid}`);
+  if (!res.ok) throw new Error("Failed to fetch venue");
+  return res.json();
 }
