@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Card from "./Card"
 import getVenues from "@/libs/getVenues"
+import { VenueJson } from "../interface"; 
+
+interface CardPanelProps {
+  venueJson: VenueJson; 
+}
 
 export default async function CardPanel(){
 

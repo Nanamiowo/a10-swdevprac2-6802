@@ -1,14 +1,28 @@
-// interface.ts
-export interface VenueJson {
-  id: number;
-  name: string;
-  location: string;
-  capacity: number;
-}
+interface VenueItem {
+    _id: string,
+    name: string,
+    address: string,
+    district: string,
+    province: string,
+    postalcode: string,
+    tel: string,
+    picture: string,
+    dailyrate: number,
+    __v: number,
+    id: string
+  }
+  
+  interface VenueJson {
+    success: boolean,
+    count: number,
+    pagination: Object,
+    data: VenueItem[]
+  }
 
-export interface BookingItem {
-  nameLastname: string;
-  tel: string;
-  venue: string;
-  bookDate: string;
-}
+  interface BookingItem {
+    nameLastname: string;
+    tel: string;
+    venue: string;
+    bookDate: string;
+  }
+  

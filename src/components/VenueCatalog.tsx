@@ -1,5 +1,10 @@
 import Card from "./Card"
-import { VenueJson } from "../../interface"
+import CardPanel from "./CardPanel";
+import { VenueJson } from "../interface";
+
+interface VenueCatalogProps {
+  venuesJson: VenueJson;
+}
 
 export default async function VenueCatalog({
   venuesJson

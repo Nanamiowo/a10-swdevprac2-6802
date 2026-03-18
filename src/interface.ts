@@ -4,3 +4,14 @@ export interface BookingItem {
   venue: string;
   bookDate: string;
 }
+
+export interface VenueItem {
+  id: number;
+  name: string;
+  location: string;
+  capacity: number;
+}
+
+export interface VenueJson {
+  data: VenueItem[]; 
+}
