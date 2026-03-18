@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import bookReducer from "./features/bookSlice";
-
 import {
   persistReducer,
   persistStore,
@@ -9,9 +8,8 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER
+  REGISTER,
 } from "redux-persist";
-
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -22,13 +20,10 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, bookReducer);
 
 export const store = configureStore({
-  reducer: {
-    book: persistedReducer,
-  },
+  reducer: { book: persistedReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // 👇 ตรงนี้แหละสำคัญ
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
