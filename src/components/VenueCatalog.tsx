@@ -20,7 +20,7 @@ export default async function VenueCatalog({
         venueJsonReady.data.map((item)=>(
           <Card
             key={item.id}
-            vid={item.id}
+            vid={item.id.toString()}
             name={item.name}
             picture={item.picture}
           />
