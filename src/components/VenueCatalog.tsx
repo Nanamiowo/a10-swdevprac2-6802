@@ -19,9 +19,9 @@ export default async function VenueCatalog({
       {
         venueJsonReady.data.map((item)=>(
           <Card
-            key={item.id}
+            key={item.id.toString()}
             vid={item.id.toString()}
-            name={item.name}
+            name={item.name.toString()}
             picture={item.picture}
           />
         ))
